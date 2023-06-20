@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Canvas Time</title>
+</head>
+
+<body onload="onInit()">
+
+    <div class="canvas-container">
+        <canvas class="the-canvas"></canvas>
+    </div>
+
+    <div class="toolbar">
+        <input type="file" class="file-input btn" name="image" onchange="onImgInput(event)" accept="image/*" />
+        <div class="color-inputs">
+            <label for="clrStroke">Stroke</label>
+            <input type="color" name="clrStroke" id="clrStroke" value="#000000"
+                onchange="onSetTool({clrStroke:this.value})">
+            <label for="clrFill">Fill</label>
+            <input type="color" name="clrFill" id="clrFill" value="#ffffff" onchange="onSetTool({clrFill:this.value})">
+        </div>
+        <select name="shape" id="shape" onchange="onSetTool({shape:this.value})">
+            <option value="">--Select Shape--</option>
+            <option value="line">line</option>
+            <option value="rect">Rectangle</option>
+            <option value="circle">Circle</option>
+            <option value="custom">Custom Shape</option>
+        </select>
+        <div>
+
+            <label for="brush">Brush</label>
+            <input type="checkbox" name="brush" id="brush" onchange="onSetTool({brush:this.checked})">
+        </div>
+        <div>
+            <a href="#" onclick="downloadCanvas(this)" download="file-name">Save</a>
+            <button onclick="onClearCanvas()">Clear</button>
+        </div>
+    </div>
+
+    <button class="fb-upload" onclick="onUploadImg()"><i class="fa-brands fa-facebook-f fa-lg"></i></button>
+
+    <script src="lib/font-awesome.js"></script>
+    <script src="js/service/mr-can.service.js"></script>
+    <script src="js/mr-can.control.js"></script>
+</body>
+
+</html>
